@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 98%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 94%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 98%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 98%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 85%;
+  --input: 20 5.9% 85%;
+  --primary: 45 93% 45%; /* Darker amber/yellow color */
+  --primary-foreground: 0 0% 98%;
+  --secondary: 166 90% 36%; /* #00b894 - teal */
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 14 80% 61%; /* #e17055 - coral */
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 45 93% 45%;
+  --radius: 0.5rem;
+  --chart-1: 220 16% 36%;
+  --chart-2: 166 90% 36%;
+  --chart-3: 14 80% 61%;
+  --chart-4: 207 90% 54%;
+  --chart-5: 39 100% 50%;
+  --sidebar-background: 220 16% 36%;
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-primary: 0 0% 100%;
+  --sidebar-primary-foreground: 220 16% 36%;
+  --sidebar-accent: 166 90% 36%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 220 13% 45%;
+  --sidebar-ring: 220 13% 45%;
+}
+
+.dark {
+  --background: 0 0% 10%;
+  --foreground: 0 0% 100%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 70%;
+  --popover: 0 0% 9%;
+  --popover-foreground: 0 0% 100%;
+  --card: 0 0% 12%;
+  --card-foreground: 0 0% 100%;
+  --border: 0 0% 20%;
+  --input: 0 0% 18%;
+  --primary: 270 85% 70%; /* Bright purple color for dark mode */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 166 90% 36%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 14 80% 61%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --ring: 270 85% 70%;
+  --chart-1: 270 85% 70%;
+  --chart-2: 166 90% 36%;
+  --chart-3: 14 80% 61%;
+  --chart-4: 207 90% 54%;
+  --chart-5: 39 100% 50%;
+  --sidebar-background: 0 0% 15%;
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-primary: 270 85% 70%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 166 90% 36%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 0 0% 25%;
+  --sidebar-ring: 0 0% 25%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+.debate-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.debate-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.coin {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.coin-flip {
+  animation: flip 3s linear forwards;
+}
+
+@keyframes flip {
+  0% { transform: rotateY(0); }
+  100% { transform: rotateY(1800deg); }
+}
+
+.coin-front, .coin-back {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.coin-back {
+  transform: rotateY(180deg);
+}
+
+.wheel-container {
+  perspective: 1000px;
+}
+
+.wheel {
+  transition: transform 4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transform-style: preserve-3d;
+}
+
+.slide-in {
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotate-y-180 {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(180deg); }
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+}
+
+.hover\:rotate-y-180:hover {
+  transform: rotateY(180deg);
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+}
+
+.font-heading {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-body {
+  font-family: 'Roboto', sans-serif;
+}
